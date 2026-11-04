@@ -1,0 +1,24 @@
+{
+  "name": "cece-african-hair-braiding",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Salon booking + beauty supply e-commerce (React, Express, MongoDB, Stripe) for Cece African Hair Braiding",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client --include=dev",
+    "dev": "concurrently -n api,web -c yellow,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:memory": "concurrently -n api,web -c yellow,magenta \"npm run dev:memory --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server",
+    "seed:demo": "npm run seed --prefix server -- --demo",
+    "test": "npm test --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "stripe:listen": "stripe listen --forward-to localhost:5000/api/webhooks/stripe"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
