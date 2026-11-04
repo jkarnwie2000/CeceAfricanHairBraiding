@@ -76,7 +76,7 @@ export function assertRuntimeEnv() {
   }
   if (!env.stripe.secretKey) {
     console.warn('[env] STRIPE_SECRET_KEY not set — checkout will return "payments not configured" until you add it.');
-  } else if (!env.stripe.secretKey.startsWith('sk_test_') && !isProd) {
+  } else if (!/^(sk|rk)_test_/.test(env.stripe.secretKey) && !isProd) {
     console.warn('[env] You are using a LIVE Stripe key outside production. Use sk_test_… keys for development.');
   }
 }

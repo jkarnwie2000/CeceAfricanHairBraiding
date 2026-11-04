@@ -178,7 +178,7 @@ export async function cancelCheckout(req, res) {
 export function stripeConfig(_req, res) {
   res.json({
     enabled: Boolean(env.stripe.secretKey),
-    testMode: env.stripe.secretKey.startsWith('sk_test_'),
+    testMode: /^(sk|rk)_test_/.test(env.stripe.secretKey),
     publishableKey: env.stripe.publishableKey || null,
     taxRate: env.taxRate,
     shippingFlatRateCents: env.shippingFlatRateCents,
