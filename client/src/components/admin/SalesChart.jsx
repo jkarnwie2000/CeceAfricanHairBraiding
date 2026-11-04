@@ -13,15 +13,18 @@ export default function SalesChart({ series }) {
   const innerW = W - pad.l - pad.r;
   const innerH = H - pad.t - pad.b;
   const max = Math.max(...series.map((s) => s.revenueCents), 1);
-  const nice = niceMax(max);
+  const nice = Math.max(niceMax(max), 10000); // at least a $100 scale so axis labels never repeat
   const slot = innerW / series.length;
   const barW = Math.max(3, slot - 2); // 2px surface gap between bars
   const ticks = [0, 0.5, 1].map((f) => Math.round(nice * f));
   const y = (v) => pad.t + innerH - (v / nice) * innerH;
   const a = active != null ? series[active] : null;
 
+  const empty = series.every((s) => s.revenueCents === 0);
+
   return (
     <div className="sales-chart">
+      {empty && <p className="small muted" style={{ margin: '8px 0 0' }}>No paid orders in the last 30 days yet — sales will appear here automatically.</p>}
       <div className="chart-svg-wrap" onMouseLeave={() => setActive(null)}>
         <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Daily revenue over the last 30 days" preserveAspectRatio="none">
           {ticks.map((t) => (
