@@ -20,3 +20,7 @@ npm-debug.log*
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+
+.vercel
+.env*
+!.env.example
