@@ -1,6 +1,42 @@
 # Cece African Hair Braiding — Salon & Beauty Supply Platform
 
-A production-ready web application for **Cece African Hair Braiding**, an African-owned hair braiding salon and beauty supply store. It combines:
+**Live site:** https://cece-african-hair-braiding.vercel.app
+
+![Cece African Hair Braiding home page](docs/screenshots/01-home.webp)
+
+## About this project
+
+Cece African Hair Braiding is a full-stack web application built for an African-owned hair braiding salon that also runs a beauty supply store. It brings the whole business online in one place: clients can discover services, book appointments, shop for hair care products and pay securely, while the owner manages everything from a single dashboard.
+
+The public website presents ten signature braiding styles — including box braids, knotless braids, Senegalese and passion twists, Fulani braids, cornrows and kids' styles — each with photography, a starting price and an estimated duration. A real-time booking system shows only dates and times that are actually open, based on the salon's opening hours, closed days and the number of braiders on duty. Every booking is checked again on the server, so two clients can never take the same slot. Clients receive a confirmation email with a secure link to cancel or reschedule up to 24 hours ahead.
+
+The online store offers braiding hair, extensions, wigs, oils, edge control, shampoos and accessories, with search, category and price filters, sorting, product reviews and related products. The cart survives page refreshes and never lets shoppers order more than is in stock. Checkout uses Stripe's hosted payment page: prices, tax and shipping are always recalculated on the server from the database, and an order is only marked paid after Stripe sends a signature-verified webhook, which also updates inventory exactly once.
+
+Customers can create accounts to track orders and appointments and manage their details. The protected admin dashboard shows sales totals and a 30-day revenue chart, and lets the owner manage orders and shipping, approve or reschedule appointments, block holidays, edit products, prices, stock and photos, update salon services, moderate reviews and read contact messages.
+
+The project uses React and Vite on the front end, Node.js and Express on the back end, MongoDB for data and Stripe for payments, and is deployed on Vercel. Business details and opening hours live in one shared file, making the site easy to adapt as the salon grows. It is mobile-first, accessible, tested with automated end-to-end API tests, and built with security in mind throughout.
+
+## Screenshots
+
+| Booking — live availability | Beauty supply shop |
+|---|---|
+| ![Appointment booking calendar with open time slots](docs/screenshots/06-booking.webp) | ![Shop page with category and price filters](docs/screenshots/04-shop.webp) |
+| **Braiding services** | **Product page** |
+| ![Services page with hairstyle photos, prices and durations](docs/screenshots/03-services.webp) | ![Product detail page with stock status and add to cart](docs/screenshots/05-product.webp) |
+| **Shopping cart** | **Secure checkout (Stripe)** |
+| ![Shopping cart with server-calculated totals](docs/screenshots/07-cart.webp) | ![Checkout form with order summary and Stripe trust badges](docs/screenshots/08-checkout.webp) |
+| **Admin — dashboard** | **Admin — appointments** |
+| ![Admin dashboard with sales stats and 30-day revenue chart](docs/screenshots/09-admin-dashboard.webp) | ![Admin appointment management with approve and reschedule](docs/screenshots/10-admin-appointments.webp) |
+| **Admin — products & inventory** | **Admin — order fulfillment** |
+| ![Admin product list with inline inventory editing](docs/screenshots/11-admin-products.webp) | ![Admin order detail with tracking and status updates](docs/screenshots/12-admin-orders.webp) |
+
+**Mobile — home, menu, shop and booking**
+
+![Mobile views of the home page, navigation menu, shop and booking calendar](docs/screenshots/mobile.webp)
+
+<sub>Admin and cart screenshots use the built-in demo data (`npm run dev:memory`); customer names are fictional.</sub>
+
+## What's included
 
 - a **salon website** (services, about, FAQ, contact, policies),
 - a real-time **appointment booking system** with double-booking protection,
