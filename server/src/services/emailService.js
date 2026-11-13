@@ -27,6 +27,12 @@ function getTransporter() {
  */
 export async function sendEmail({ to, subject, html, text, replyTo }) {
   if (!to) return false;
+  if (!env.smtp.host && env.isProd) {
+    // Live site without an email service: never write message bodies (they can contain
+    // password-reset links) to the server logs. Just flag that email isn't configured.
+    console.warn(`[email] SMTP is not configured — "${subject}" was NOT sent. Set SMTP_* environment variables.`);
+    return false;
+  }
   try {
     await getTransporter().sendMail({ from: env.emailFrom, to, subject, html, text, replyTo });
     sentEmails.push({ to, subject, at: new Date() });
