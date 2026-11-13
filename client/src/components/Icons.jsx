@@ -40,6 +40,7 @@ export const IconMail = make(<><rect x="3" y="5" width="18" height="14" rx="2" /
 export const IconPin = make(<><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z" /><circle cx="12" cy="9" r="2.5" /></>);
 export const IconArrowRight = make(<><path d="M5 12h14M13 6l6 6-6 6" /></>);
 export const IconArrowLeft = make(<><path d="M19 12H5M11 6l-6 6 6 6" /></>);
+export const IconArrowUp = make(<><path d="M12 19V5M6 11l6-6 6 6" /></>);
 export const IconPlus = make(<><path d="M12 5v14M5 12h14" /></>);
 export const IconMinus = make(<><path d="M5 12h14" /></>);
 export const IconTrash = make(<><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" /></>);

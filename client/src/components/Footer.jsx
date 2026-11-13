@@ -2,8 +2,15 @@ import { Link } from 'react-router-dom';
 import { BUSINESS, WEEKDAYS } from '@shared/business.js';
 import Logo from './Logo.jsx';
 import NewsletterForm from './NewsletterForm.jsx';
-import { IconInstagram, IconFacebook, IconTiktok, IconYoutube, IconPhone, IconMail, IconPin, IconLock } from './Icons.jsx';
+import { IconInstagram, IconFacebook, IconTiktok, IconYoutube, IconPhone, IconMail, IconPin, IconLock, IconArrowUp } from './Icons.jsx';
 import { formatMinutes } from '../utils/format.js';
+
+/** Smooth-scroll to the top (instant for reduced-motion users) and move keyboard focus back to the top of the page. */
+function scrollToTop() {
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  document.querySelector('.site-header .logo')?.focus({ preventScroll: true });
+}
 
 const toMin = (hhmm) => {
   const [h, m] = hhmm.split(':').map(Number);
@@ -108,8 +115,11 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
-        <ul>
+        <span className="footer-copy">© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
+        <button type="button" className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+          <IconArrowUp size={20} />
+        </button>
+        <ul className="footer-legal">
           <li><Link to="/privacy">Privacy Policy</Link></li>
           <li><Link to="/terms">Terms &amp; Conditions</Link></li>
           <li><Link to="/shipping-returns">Shipping &amp; Returns</Link></li>
