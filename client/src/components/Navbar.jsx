@@ -60,7 +60,7 @@ export default function Navbar() {
         <Logo />
         <nav className={`main-nav${open ? ' open' : ''}`} aria-label="Main" id="main-nav">
           <ul>
-            <li className="mobile-only">
+            <li>
               <NavLink to="/" end>
                 Home
               </NavLink>
