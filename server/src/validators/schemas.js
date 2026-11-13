@@ -31,7 +31,10 @@ const address = z.object({
 
 // ── Auth ───────────────────────────────────────────────
 export const registerSchema = z.object({ name, email, password, phone: optionalPhone });
-export const loginSchema = z.object({ email, password: z.string().min(1, 'Password is required').max(128) });
+export const adminRegisterSchema = registerSchema.extend({
+  inviteCode: z.string().trim().min(1, 'Admin invite code is required').max(200),
+});
+export const loginSchema =z.object({ email, password: z.string().min(1, 'Password is required').max(128) });
 export const forgotPasswordSchema = z.object({ email });
 export const resetPasswordSchema = z.object({ token: z.string().length(64, 'Invalid reset link'), password });
 export const profileSchema = z.object({ name: name.optional(), phone: optionalPhone, address: address.optional() });

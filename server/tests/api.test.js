@@ -16,6 +16,7 @@ process.env.TAX_RATE = '0.1';
 process.env.SHIPPING_FLAT_RATE = '5';
 process.env.FREE_SHIPPING_THRESHOLD = '75';
 process.env.SMTP_HOST = '';
+process.env.ADMIN_SIGNUP_CODE = 'test-invite-code-123';
 
 const { MongoMemoryServer } = await import('mongodb-memory-server');
 const { default: request } = await import('supertest');
@@ -98,6 +99,39 @@ describe('auth & role-based access', () => {
     const s = await admin.get('/api/admin/stats');
     assert.equal(s.status, 200);
     assert.equal(s.body.salesSeries.length, 30);
+  });
+
+  test('admin sign-up requires the secret invite code', async () => {
+    const body = { name: 'New Admin', email: 'newadmin@example.com', password: 'Password123' };
+    const missing = await request(app).post('/api/auth/register-admin').send(body);
+    assert.equal(missing.status, 400);
+    const wrong = await request(app).post('/api/auth/register-admin').send({ ...body, inviteCode: 'guess' });
+    assert.equal(wrong.status, 403);
+    const a = agent();
+    const ok = await a.post('/api/auth/register-admin').send({ ...body, inviteCode: 'test-invite-code-123' });
+    assert.equal(ok.status, 201, ok.text);
+    assert.equal(ok.body.user.role, 'admin');
+    assert.equal((await a.get('/api/admin/stats')).status, 200);
+    const dup = await request(app).post('/api/auth/register-admin').send({ ...body, inviteCode: 'test-invite-code-123' });
+    assert.equal(dup.status, 409);
+    // The normal public sign-up can never create an admin
+    const sneaky = await request(app).post('/api/auth/register').send({ name: 'Sneaky', email: 'sneaky@example.com', password: 'Password123', role: 'admin' });
+    assert.equal(sneaky.body.user.role, 'customer');
+  });
+
+  test('admin sign-up is refused when no invite code is configured', async () => {
+    const { env } = await import('../src/config/env.js');
+    const saved = env.adminSignupCode;
+    env.adminSignupCode = '';
+    try {
+      const r = await request(app)
+        .post('/api/auth/register-admin')
+        .send({ name: 'Nope', email: 'nope@example.com', password: 'Password123', inviteCode: 'anything' });
+      assert.equal(r.status, 403);
+      assert.match(r.body.message, /turned off/);
+    } finally {
+      env.adminSignupCode = saved;
+    }
   });
 
   test('password reset flow issues a working one-time token', async () => {

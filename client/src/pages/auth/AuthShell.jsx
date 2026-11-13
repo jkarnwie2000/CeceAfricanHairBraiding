@@ -1,6 +1,6 @@
 import Seo from '../../components/Seo.jsx';
 
-export default function AuthShell({ title, subtitle, children, seoTitle }) {
+export default function AuthShell({ title, subtitle, children, seoTitle, eyebrow }) {
   return (
     <>
       <Seo title={seoTitle || title} noindex />
@@ -11,6 +11,7 @@ export default function AuthShell({ title, subtitle, children, seoTitle }) {
           </div>
           <div className="auth-body">
             <div className="ornament ornament-left" aria-hidden="true" />
+            {eyebrow && <span className="eyebrow">{eyebrow}</span>}
             <h1>{title}</h1>
             {subtitle && <p className="muted">{subtitle}</p>}
             {children}

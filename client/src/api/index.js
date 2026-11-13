@@ -7,6 +7,7 @@ export const authApi = {
   session: () => data(http.get('/auth/session')),
   login: (body) => data(http.post('/auth/login', body)),
   register: (body) => data(http.post('/auth/register', body)),
+  registerAdmin: (body) => data(http.post('/auth/register-admin', body)),
   logout: () => data(http.post('/auth/logout')),
   updateProfile: (body) => data(http.patch('/auth/me', body)),
   changePassword: (body) => data(http.post('/auth/change-password', body)),

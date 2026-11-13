@@ -8,6 +8,7 @@ import * as s from '../validators/schemas.js';
 const r = Router();
 
 r.post('/register', authLimiter, validate(s.registerSchema), c.register);
+r.post('/register-admin', authLimiter, validate(s.adminRegisterSchema), c.registerAdmin);
 r.post('/login', authLimiter, validate(s.loginSchema), c.login);
 r.post('/logout', c.logout);
 r.post('/forgot-password', authLimiter, validate(s.forgotPasswordSchema), c.forgotPassword);

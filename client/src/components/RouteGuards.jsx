@@ -16,7 +16,6 @@ export function RequireAdmin({ children }) {
   const { user, ready } = useAuth();
   const location = useLocation();
   if (!ready) return <PageLoader label="Checking your session…" />;
-  if (!user) return <Navigate to={`/login?redirect=${encodeURIComponent(location.pathname)}`} replace />;
-  if (user.role !== 'admin') return <Navigate to="/account" replace />;
+  if (!user || user.role !== 'admin') return <Navigate to={`/admin/login?redirect=${encodeURIComponent(location.pathname)}`} replace />;
   return children || <Outlet />;
 }

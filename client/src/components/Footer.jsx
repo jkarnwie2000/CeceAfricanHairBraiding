@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BUSINESS, WEEKDAYS } from '@shared/business.js';
 import Logo from './Logo.jsx';
 import NewsletterForm from './NewsletterForm.jsx';
-import { IconInstagram, IconFacebook, IconTiktok, IconYoutube, IconPhone, IconMail, IconPin } from './Icons.jsx';
+import { IconInstagram, IconFacebook, IconTiktok, IconYoutube, IconPhone, IconMail, IconPin, IconLock } from './Icons.jsx';
 import { formatMinutes } from '../utils/format.js';
 
 const toMin = (hhmm) => {
@@ -113,6 +113,11 @@ export default function Footer() {
           <li><Link to="/privacy">Privacy Policy</Link></li>
           <li><Link to="/terms">Terms &amp; Conditions</Link></li>
           <li><Link to="/shipping-returns">Shipping &amp; Returns</Link></li>
+          <li>
+            <Link to="/admin/login" className="footer-admin-link">
+              <IconLock size={14} /> Admin log in
+            </Link>
+          </li>
         </ul>
       </div>
     </footer>

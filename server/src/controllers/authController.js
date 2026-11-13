@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import { User } from '../models/index.js';
 import { env } from '../config/env.js';
 import { ApiError } from '../utils/ApiError.js';
@@ -16,6 +17,33 @@ export async function register(req, res) {
   if (await User.exists({ email })) throw ApiError.conflict('An account with this email already exists. Try logging in.');
   const user = await User.create({ name, email, password, phone, role: 'customer' });
   sendEmail({ to: user.email, ...welcomeEmail(user.name) });
+  issueSession(res, user, 201);
+}
+
+/** Constant-time comparison so the invite code can't be guessed character by character. */
+function inviteCodeMatches(given) {
+  const expected = env.adminSignupCode;
+  if (!expected || typeof given !== 'string') return false;
+  const a = crypto.createHash('sha256').update(given).digest();
+  const b = crypto.createHash('sha256').update(expected).digest();
+  return crypto.timingSafeEqual(a, b);
+}
+
+/**
+ * Create an ADMINISTRATOR account. Requires the secret ADMIN_SIGNUP_CODE so the public
+ * can never grant themselves admin access. Existing admins can also promote customers
+ * from Admin → Customers.
+ */
+export async function registerAdmin(req, res) {
+  if (!env.adminSignupCode) {
+    throw ApiError.forbidden('Admin sign-up is turned off. Ask an existing administrator to grant you access.');
+  }
+  const { name, email, password, phone, inviteCode } = req.body;
+  if (!inviteCodeMatches(inviteCode)) throw ApiError.forbidden('That admin invite code is not valid.');
+  if (await User.exists({ email })) {
+    throw ApiError.conflict('An account with this email already exists. Log in, or ask an administrator to grant it admin access.');
+  }
+  const user = await User.create({ name, email, password, phone, role: 'admin' });
   issueSession(res, user, 201);
 }
 

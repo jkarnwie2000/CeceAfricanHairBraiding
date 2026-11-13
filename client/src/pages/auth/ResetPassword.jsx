@@ -27,7 +27,7 @@ export default function ResetPassword() {
       const r = await authApi.resetPassword({ token, password: form.password });
       setUser(r.user);
       toast.success('Your password has been updated.');
-      navigate('/account', { replace: true });
+      navigate(r.user.role === 'admin' ? '/admin' : '/account', { replace: true });
     } catch (err) {
       setError(getErrorMessage(err));
       setBusy(false);

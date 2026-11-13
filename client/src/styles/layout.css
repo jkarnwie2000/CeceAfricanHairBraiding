@@ -352,6 +352,11 @@
   padding: 0;
   flex-wrap: wrap;
 }
+.footer-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 @media (max-width: 900px) {
   .footer-main {
     grid-template-columns: 1fr 1fr;

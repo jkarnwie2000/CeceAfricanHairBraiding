@@ -18,6 +18,8 @@ const Login = lazy(() => import('./pages/auth/Login.jsx'));
 const Register = lazy(() => import('./pages/auth/Register.jsx'));
 const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword.jsx'));
 const ResetPassword = lazy(() => import('./pages/auth/ResetPassword.jsx'));
+const AdminLogin = lazy(() => import('./pages/auth/AdminLogin.jsx'));
+const AdminRegister = lazy(() => import('./pages/auth/AdminRegister.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 const Faq = lazy(() => import('./pages/Faq.jsx'));
@@ -58,6 +60,9 @@ export default function App() {
         <Route path="register" element={<Register />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password" element={<ResetPassword />} />
+        {/* Public admin auth pages (more specific than the protected /admin/* routes below) */}
+        <Route path="admin/login" element={<AdminLogin />} />
+        <Route path="admin/register" element={<AdminRegister />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<Faq />} />

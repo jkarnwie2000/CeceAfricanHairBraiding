@@ -97,6 +97,7 @@ Everything is JavaScript (no TypeScript).
 - Contact form, newsletter signup, FAQ, Privacy Policy, Terms, Shipping & Returns
 
 **Business owner (Admin → `/admin`)**
+- Staff sign in at **`/admin/login`** (linked as "Admin log in" in the footer), with forgot-password and *create new admin account*. New admin accounts require the secret `ADMIN_SIGNUP_CODE`, so the public can never make themselves administrators
 - Dashboard: total sales, 30-day revenue chart, average order, pending bookings, customers, reviews, recent orders, upcoming appointments, low stock, best sellers
 - Orders: filter/search, see items & address, update status (processing → shipped → delivered), tracking numbers, customer emails
 - Appointments: approve, reschedule, complete, no-show, cancel (client is emailed), private notes, **closed dates/holidays**
@@ -206,6 +207,7 @@ All secrets live in **`server/.env`** (never commit it — it's in `.gitignore`)
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS` | for real email | leave `SMTP_HOST` empty in development → emails print in the server console |
 | `EMAIL_FROM` | | `"Cece African Hair Braiding <hello@yourdomain.com>"` |
 | `NOTIFY_EMAIL` | | where new booking/order/contact alerts go |
+| `ADMIN_SIGNUP_CODE` | | secret invite code required to create admin accounts at `/admin/register`; leave empty to turn admin sign-up off |
 | `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | | used by `npm run seed` to create the first admin |
 
 The client normally needs **no** env file. `client/.env.example` documents the two optional values (`VITE_API_PROXY`, `VITE_API_URL`).
@@ -335,9 +337,9 @@ Use an `EMAIL_FROM` address on a domain you've verified with the provider.
 
 ## Automated tests
 
-`npm test` runs 22 end-to-end API tests against a real in-memory MongoDB, using the real Stripe SDK for webhook signing (only the network call that creates a Checkout Session is stubbed). They cover:
+`npm test` runs 24 end-to-end API tests against a real in-memory MongoDB, using the real Stripe SDK for webhook signing (only the network call that creates a Checkout Session is stubbed). They cover:
 
-- registration, login, httpOnly cookies, password reset, admin-only routes (customers get 403)
+- registration, login, httpOnly cookies, password reset, admin-only routes (customers get 403), admin sign-up only with the correct invite code
 - search/filter/sort, regex-injection safety, product detail + related products
 - cart re-pricing from the database (tampered prices ignored), inventory limits, tax/shipping math
 - checkout rejection for out-of-stock items and invalid addresses
@@ -362,7 +364,7 @@ The simplest setup is **one Node web service** (Express serves both the API and 
    - `NODE_ENV=production`
    - `CLIENT_URL=https://your-domain.com` and `SERVER_URL=https://your-domain.com`
    - your Atlas `MONGODB_URI`, a strong `JWT_SECRET`, Stripe keys, SMTP settings
-5. Deploy, then run the seed once (Render **Shell**: `npm run seed`). Log in to `/admin` and **change the admin password** (Account → Change password).
+5. Deploy, then run the seed once (Render **Shell**: `npm run seed`). Log in at `/admin/login` and **change the admin password** (Account → Change password).
 6. Add the production Stripe webhook endpoint (see [Production](#production)).
 7. Add your custom domain in the host's settings (HTTPS is automatic).
 
@@ -382,7 +384,7 @@ If you host the React app separately (e.g. Netlify/Vercel), set `VITE_API_URL=ht
 - [ ] Have the policies (Privacy, Terms, Shipping & Returns) reviewed for your state and business.
 - [ ] Set your real `TAX_RATE` (or consider Stripe Tax for multi-state sales tax), shipping rate and free-shipping threshold.
 - [ ] Set `BOOKING_CAPACITY` to the number of braiders, and the opening hours in `shared/business.js`.
-- [ ] Change the default admin password; use a strong `JWT_SECRET`.
+- [ ] Change the default admin password; use a strong `JWT_SECRET`; share `ADMIN_SIGNUP_CODE` only with trusted staff (or leave it empty).
 - [ ] Configure SMTP and send yourself a test booking + order.
 - [ ] Complete one full live-mode purchase with a real card and refund it.
 
