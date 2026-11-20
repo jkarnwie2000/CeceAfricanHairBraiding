@@ -4,7 +4,7 @@ import { BUSINESS } from '@shared/business.js';
  * Per-page <title> and meta tags. React 19 hoists these elements into <head> automatically.
  */
 export default function Seo({ title, description, image, noindex = false }) {
-  const fullTitle = title ? `${title} | ${BUSINESS.name}` : `${BUSINESS.name} | Braiding Salon & Beauty Supply`;
+  const fullTitle = title ? `${title} | ${BUSINESS.name}` : `${BUSINESS.name} | Braids, Twists & Beauty Supply`;
   const desc = description || BUSINESS.description;
   return (
     <>

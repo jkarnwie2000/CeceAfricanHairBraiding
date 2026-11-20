@@ -130,7 +130,7 @@ async function seedDemoData(log) {
     const [firstName, lastName] = u.name.split(' ');
     const status = statuses[i % statuses.length];
     await Order.create({
-      orderNumber: shortCode('CECE'),
+      orderNumber: shortCode('LOY'),
       user: u._id,
       customer: { firstName, lastName, email: u.email, phone: u.phone },
       shippingAddress: { line1: '100 Peachtree St NW', city: 'Atlanta', state: 'GA', postalCode: '30303', country: 'US' },

@@ -7,7 +7,7 @@ import { whyChooseUs } from '../data/content.js';
 export default function About() {
   return (
     <>
-      <Seo title="About Us" description="Meet Cece African Hair Braiding — an African-owned salon and beauty supply rooted in West African braiding traditions." />
+      <Seo title="About Us" description="Meet Loyees Hair Braiding Salon — an African-owned salon and beauty supply rooted in West African braiding traditions." />
       <header className="page-header">
         <div className="container">
           <span className="eyebrow">Our Story</span>
@@ -25,11 +25,11 @@ export default function About() {
             <div className="ornament ornament-left" aria-hidden="true" />
             <h2>From our mothers&apos; hands to yours</h2>
             <p>
-              Cece learned to braid as a little girl, sitting between her mother&apos;s knees on Saturday mornings — a tradition shared by
+              Our founder learned to braid as a little girl, sitting between her mother&apos;s knees on Saturday mornings — a tradition shared by
               generations of women across West Africa. Each part, each pattern, carried meaning: family, community, celebration.
             </p>
             <p>
-              Cece African Hair Braiding was born from that tradition. Today our team of braiders brings the same patience and pride to every
+              Loyees Hair Braiding Salon was born from that tradition. Today our team of braiders brings the same patience and pride to every
               client, whether it&apos;s a first set of cornrows for a five-year-old or waist-length knotless braids for a wedding.
             </p>
             <p>

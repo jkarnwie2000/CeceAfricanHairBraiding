@@ -11,7 +11,7 @@ import { env } from './config/env.js';
 
 console.log('[dev:memory] Starting in-memory MongoDB (first run downloads ~100 MB)…');
 const mongod = await MongoMemoryServer.create();
-const uri = mongod.getUri('cece');
+const uri = mongod.getUri('loyees');
 
 await start({ mongoUri: uri });
 await seedDatabase({ demo: true });

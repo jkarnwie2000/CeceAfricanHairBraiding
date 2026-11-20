@@ -1,4 +1,4 @@
-# Cece African Hair Braiding — notes for Claude
+# Loyees Hair Braiding Salon — notes for Claude
 
 Full-stack salon booking + beauty-supply e-commerce app. See README.md for setup.
 
@@ -8,7 +8,7 @@ Full-stack salon booking + beauty-supply e-commerce app. See README.md for setup
 - `client/` — React 19 + Vite 8 + React Router 7. Plain CSS in `src/styles` with tokens in `base.css`.
 
 ## Commands
-- `npm run dev:memory` (root) — API with in-memory MongoDB + demo data, plus Vite. Admin `admin@ceceafricanhair.com` / `ChangeMe123!`.
+- `npm run dev:memory` (root) — API with in-memory MongoDB + demo data, plus Vite. Admin `admin@loyeeshairbraiding.com` / `ChangeMe123!`.
 - `npm test` (root or server) — 24 API tests (mongodb-memory-server + supertest).
 - `npm run build` — client production build.
 
@@ -21,5 +21,5 @@ Full-stack salon booking + beauty-supply e-commerce app. See README.md for setup
 - Express 5: `req.query` is read-only → validated query lives on `req.validatedQuery`.
 - Mongoose 9: use `{ returnDocument: 'after' }`, not `{ new: true }`; pre-hooks are async without `next`.
 - Admin auth pages: `/admin/login` + `/admin/register` (public routes declared before the protected `/admin/*` tree). `POST /api/auth/register-admin` requires `ADMIN_SIGNUP_CODE` (empty = disabled). `RequireAdmin` redirects to `/admin/login`.
-- Auth: JWT in httpOnly cookie `cece_token`; client checks session via `GET /api/auth/session` (returns `{user:null}` instead of 401).
+- Auth: JWT in httpOnly cookie `loyees_token`; client checks session via `GET /api/auth/session` (returns `{user:null}` instead of 401).
 - Don't put `backdrop-filter`/`transform` on `.site-header` — it traps the fixed mobile menu.

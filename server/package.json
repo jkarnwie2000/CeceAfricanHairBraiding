@@ -1,8 +1,8 @@
 {
-  "name": "cece-server",
+  "name": "loyees-server",
   "version": "1.0.0",
   "private": true,
-  "description": "Express + MongoDB + Stripe API for Cece African Hair Braiding",
+  "description": "Express + MongoDB + Stripe API for Loyees Hair Braiding Salon",
   "type": "module",
   "main": "src/server.js",
   "engines": {

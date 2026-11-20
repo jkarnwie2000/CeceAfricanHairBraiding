@@ -13,11 +13,11 @@ export function LogoMark({ className = 'logo-mark', light }) {
 
 export default function Logo({ light = false, onClick }) {
   return (
-    <Link to="/" className={`logo${light ? ' light' : ''}`} aria-label="Cece African Hair Braiding — home" onClick={onClick}>
+    <Link to="/" className={`logo${light ? ' light' : ''}`} aria-label="Loyees Hair Braiding Salon — home" onClick={onClick}>
       <LogoMark light={light} />
       <span className="logo-text">
-        <span className="logo-name">Cece</span>
-        <span className="logo-sub">African Hair Braiding</span>
+        <span className="logo-name">Loyees</span>
+        <span className="logo-sub">Hair Braiding Salon</span>
       </span>
     </Link>
   );

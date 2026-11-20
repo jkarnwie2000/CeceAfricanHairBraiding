@@ -61,7 +61,7 @@ export default function Footer() {
       <section className="footer-newsletter" aria-labelledby="newsletter-heading">
         <div className="container inner">
           <div>
-            <h2 id="newsletter-heading">Join the Cece Circle</h2>
+            <h2 id="newsletter-heading">Join the Loyees Circle</h2>
             <p>Styling tips, new arrivals and members-only offers — straight to your inbox.</p>
           </div>
           <NewsletterForm />

@@ -6,7 +6,7 @@ export const testimonials = [
     service: 'Knotless Braids',
     rating: 5,
     quote:
-      'Cece and her team are true artists. My knotless braids were so neat and light — zero tension and I got compliments for weeks. The salon feels like home.',
+      'The team at Loyees are true artists. My knotless braids were so neat and light — zero tension and I got compliments for weeks. The salon feels like home.',
   },
   {
     name: 'Keisha W.',

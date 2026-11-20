@@ -36,7 +36,7 @@ export default function Register() {
     setError('');
     try {
       const u = await register({ name: form.name, email: form.email, phone: form.phone, password: form.password });
-      toast.success(`Welcome to Cece, ${u.name.split(' ')[0]}!`);
+      toast.success(`Welcome to Loyees, ${u.name.split(' ')[0]}!`);
       navigate(safeRedirect(redirect), { replace: true });
     } catch (err) {
       setError(getErrorMessage(err));

@@ -4,14 +4,14 @@
  * Replace the placeholder address / phone / email / social links with the real business details before launch.
  */
 export const BUSINESS = {
-  name: 'Cece African Hair Braiding',
-  shortName: 'Cece',
+  name: 'Loyees Hair Braiding Salon',
+  shortName: 'Loyees',
   tagline: 'Artistry in every braid. Heritage in every strand.',
   description:
     'African-owned hair braiding salon and beauty supply store specializing in box braids, knotless braids, twists, cornrows and premium hair care products.',
   phone: '(404) 555-0182',
   phoneHref: '+14045550182',
-  email: 'hello@ceceafricanhair.com',
+  email: 'hello@loyeeshairbraiding.com',
   address: {
     line1: '2418 Heritage Avenue, Suite B',
     city: 'Atlanta',

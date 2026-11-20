@@ -54,13 +54,13 @@ export const env = {
     user: str(process.env.SMTP_USER),
     pass: str(process.env.SMTP_PASS),
   },
-  emailFrom: str(process.env.EMAIL_FROM, 'Cece African Hair Braiding <hello@ceceafricanhair.com>'),
+  emailFrom: str(process.env.EMAIL_FROM, 'Loyees Hair Braiding Salon <hello@loyeeshairbraiding.com>'),
   notifyEmail: str(process.env.NOTIFY_EMAIL),
   /** Secret code required to create a new administrator account from /admin/register. Empty = admin sign-up disabled. */
   adminSignupCode: str(process.env.ADMIN_SIGNUP_CODE),
   admin: {
-    name: str(process.env.ADMIN_NAME, 'Cece Owner'),
-    email: str(process.env.ADMIN_EMAIL, 'admin@ceceafricanhair.com').toLowerCase(),
+    name: str(process.env.ADMIN_NAME, 'Loyees Owner'),
+    email: str(process.env.ADMIN_EMAIL, 'admin@loyeeshairbraiding.com').toLowerCase(),
     password: str(process.env.ADMIN_PASSWORD, 'ChangeMe123!'),
   },
 };

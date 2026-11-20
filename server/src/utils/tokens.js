@@ -14,7 +14,7 @@ export function tokenMatches(rawToken, storedHash) {
 
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I to avoid confusion
 
-/** Human-friendly reference codes, e.g. CECE-7K4M2Q */
+/** Human-friendly reference codes, e.g. LOY-7K4M2Q */
 export function shortCode(prefix, length = 6) {
   let out = '';
   for (let i = 0; i < length; i++) out += ALPHABET[crypto.randomInt(ALPHABET.length)];

@@ -38,7 +38,7 @@ export async function createCheckoutSession(req, res) {
 
   const cancelToken = randomToken(24);
   const order = await Order.create({
-    orderNumber: shortCode('CECE'),
+    orderNumber: shortCode('LOY'),
     user: req.user?._id || null,
     customer,
     shippingAddress,
@@ -108,7 +108,7 @@ export async function createCheckoutSession(req, res) {
         client_reference_id: order._id.toString(),
         metadata: { orderId: order._id.toString(), orderNumber: order.orderNumber },
         payment_intent_data: {
-          description: `Cece African Hair Braiding order ${order.orderNumber}`,
+          description: `Loyees Hair Braiding Salon order ${order.orderNumber}`,
           metadata: { orderId: order._id.toString(), orderNumber: order.orderNumber },
           shipping: {
             name: `${customer.firstName} ${customer.lastName}`,

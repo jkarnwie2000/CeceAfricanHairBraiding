@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="African Hair Braiding Salon & Beauty Supply"
-        description="Cece African Hair Braiding — expert box braids, knotless braids, twists, cornrows and kids braiding. Book online and shop premium braiding hair, oils and edge control."
+        title="Braids, Twists & Beauty Supply"
+        description="Loyees Hair Braiding Salon — expert box braids, knotless braids, twists, cornrows and kids braiding. Book online and shop premium braiding hair, oils and edge control."
       />
 
       {/* ── Hero ───────────────────────────────────────── */}
@@ -130,8 +130,8 @@ export default function Home() {
           </div>
           <div>
             <div className="ornament ornament-left" aria-hidden="true" />
-            <span className="eyebrow">Why Cece</span>
-            <h2 id="why-heading">Why choose Cece African Hair Braiding</h2>
+            <span className="eyebrow">Why Loyees</span>
+            <h2 id="why-heading">Why choose Loyees Hair Braiding Salon</h2>
             <p className="lead">
               We are a family of braiders who grew up learning these traditions from our mothers and aunties. Every appointment is
               rooted in that same care.

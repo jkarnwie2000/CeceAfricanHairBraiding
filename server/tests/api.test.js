@@ -33,7 +33,7 @@ const createdSessions = [];
 
 before(async () => {
   mongod = await MongoMemoryServer.create();
-  await connectDB(mongod.getUri('cece-test'));
+  await connectDB(mongod.getUri('loyees-test'));
   await seedDatabase({ log: () => {} });
   app = createApp();
   // Stub only the outbound Stripe API call; keep the real SDK (webhooks.constructEvent etc.)
@@ -95,7 +95,7 @@ describe('auth & role-based access', () => {
     assert.equal((await c.get('/api/admin/stats')).status, 403);
     assert.equal((await c.post('/api/products').send({})).status, 403);
     assert.equal((await request(app).get('/api/admin/stats')).status, 401);
-    const admin = await login('admin@ceceafricanhair.com', 'ChangeMe123!');
+    const admin = await login('admin@loyeeshairbraiding.com', 'ChangeMe123!');
     const s = await admin.get('/api/admin/stats');
     assert.equal(s.status, 200);
     assert.equal(s.body.salesSeries.length, 30);
@@ -367,7 +367,7 @@ describe('appointments', () => {
 
   test('admin can approve; customer is emailed', async () => {
     const created = await request(app).post('/api/appointments').send(booking({ email: 'approve@example.com' }));
-    const admin = await login('admin@ceceafricanhair.com', 'ChangeMe123!');
+    const admin = await login('admin@loyeeshairbraiding.com', 'ChangeMe123!');
     const r = await admin.patch(`/api/appointments/admin/${created.body.appointment.id}`).send({ status: 'confirmed' });
     assert.equal(r.status, 200);
     assert.equal(r.body.appointment.status, 'confirmed');
@@ -377,7 +377,7 @@ describe('appointments', () => {
 
 describe('admin product management', () => {
   test('create, update inventory, reject negative stock, delete', async () => {
-    const admin = await login('admin@ceceafricanhair.com', 'ChangeMe123!');
+    const admin = await login('admin@loyeeshairbraiding.com', 'ChangeMe123!');
     const cats = await request(app).get('/api/categories');
     const create = await admin.post('/api/products').send({
       name: 'Test Edge Brush',

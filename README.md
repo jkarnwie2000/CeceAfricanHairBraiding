@@ -1,12 +1,12 @@
-# Cece African Hair Braiding — Salon & Beauty Supply Platform
+# Loyees Hair Braiding Salon — Salon & Beauty Supply Platform
 
-**Live site:** https://cece-african-hair-braiding.vercel.app
+**Live site:** https://loyees-hair-braiding-salon.vercel.app
 
-![Cece African Hair Braiding home page](docs/screenshots/01-home.webp)
+![Loyees Hair Braiding Salon home page](docs/screenshots/01-home.webp)
 
 ## About this project
 
-Cece African Hair Braiding is a full-stack web application built for an African-owned hair braiding salon that also runs a beauty supply store. It brings the whole business online in one place: clients can discover services, book appointments, shop for hair care products and pay securely, while the owner manages everything from a single dashboard.
+Loyees Hair Braiding Salon is a full-stack web application built for an African-owned hair braiding salon that also runs a beauty supply store. It brings the whole business online in one place: clients can discover services, book appointments, shop for hair care products and pay securely, while the owner manages everything from a single dashboard.
 
 The public website presents ten signature braiding styles — including box braids, knotless braids, Senegalese and passion twists, Fulani braids, cornrows and kids' styles — each with photography, a starting price and an estimated duration. A real-time booking system shows only dates and times that are actually open, based on the salon's opening hours, closed days and the number of braiders on duty. Every booking is checked again on the server, so two clients can never take the same slot. Clients receive a confirmation email with a secure link to cancel or reschedule up to 24 hours ahead.
 
@@ -107,7 +107,7 @@ Everything is JavaScript (no TypeScript).
 ## Project structure
 
 ```
-cece-african-hair-store/
+loyees-hair-braiding-salon/
 ├── package.json            ← root scripts (run both apps together)
 ├── shared/business.js      ← business name, address, phone, HOURS, booking policy (used by client AND server)
 ├── server/                 ← Express API
@@ -159,7 +159,7 @@ Open **http://localhost:5173**.
 
 | Login | Email | Password |
 |---|---|---|
-| Admin | `admin@ceceafricanhair.com` | `ChangeMe123!` |
+| Admin | `admin@loyeeshairbraiding.com` | `ChangeMe123!` |
 | Demo customer | `amara@example.com` | `Customer123!` |
 
 > The in-memory database is wiped every time you stop the server. The first run downloads a MongoDB binary (~100 MB). Checkout will say "payments are not configured" until you add Stripe keys (below).
@@ -167,8 +167,8 @@ Open **http://localhost:5173**.
 ## Full installation
 
 ```bash
-git clone <your-repo-url> cece-african-hair-store
-cd cece-african-hair-store
+git clone <your-repo-url> loyees-hair-braiding-salon
+cd loyees-hair-braiding-salon
 npm run install:all
 
 # Create your environment file
@@ -193,7 +193,7 @@ All secrets live in **`server/.env`** (never commit it — it's in `.gitignore`)
 | `PORT` | | `5000` |
 | `CLIENT_URL` | ✔ | `http://localhost:5173` — used for CORS, Stripe redirect URLs and email links |
 | `SERVER_URL` | | `http://localhost:5000` |
-| `MONGODB_URI` | ✔ | `mongodb://127.0.0.1:27017/cece` or an Atlas URI |
+| `MONGODB_URI` | ✔ | `mongodb://127.0.0.1:27017/loyees` or an Atlas URI |
 | `JWT_SECRET` | ✔ (prod) | long random string: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
 | `JWT_EXPIRES_IN` | | `7d` |
 | `STRIPE_SECRET_KEY` | ✔ for payments | `sk_test_…` (test) / `sk_live_…` (live) |
@@ -205,7 +205,7 @@ All secrets live in **`server/.env`** (never commit it — it's in `.gitignore`)
 | `FREE_SHIPPING_THRESHOLD` | | `75` |
 | `BOOKING_CAPACITY` | | number of braiders working at once (`2`) |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS` | for real email | leave `SMTP_HOST` empty in development → emails print in the server console |
-| `EMAIL_FROM` | | `"Cece African Hair Braiding <hello@yourdomain.com>"` |
+| `EMAIL_FROM` | | `"Loyees Hair Braiding Salon <hello@yourdomain.com>"` |
 | `NOTIFY_EMAIL` | | where new booking/order/contact alerts go |
 | `ADMIN_SIGNUP_CODE` | | secret invite code required to create admin accounts at `/admin/register`; leave empty to turn admin sign-up off |
 | `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | | used by `npm run seed` to create the first admin |
@@ -220,9 +220,9 @@ The client normally needs **no** env file. `client/.env.example` documents the t
 1. Create an account at <https://www.mongodb.com/cloud/atlas> and a free **M0** cluster.
 2. *Database Access* → add a database user + password.
 3. *Network Access* → add your IP (or `0.0.0.0/0` for hosted servers).
-4. *Connect → Drivers* → copy the URI and put it in `MONGODB_URI`, adding the database name: `mongodb+srv://user:pass@cluster0.xxxxx.mongodb.net/cece?retryWrites=true&w=majority`
+4. *Connect → Drivers* → copy the URI and put it in `MONGODB_URI`, adding the database name: `mongodb+srv://user:pass@cluster0.xxxxx.mongodb.net/loyees?retryWrites=true&w=majority`
 
-**Option B — local MongoDB:** install MongoDB Community Server and use `MONGODB_URI=mongodb://127.0.0.1:27017/cece`.
+**Option B — local MongoDB:** install MongoDB Community Server and use `MONGODB_URI=mongodb://127.0.0.1:27017/loyees`.
 
 **Option C — no install:** `npm run dev:memory` (temporary data, development only).
 

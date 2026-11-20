@@ -1,10 +1,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-const STORAGE_KEY = 'cece_cart_v1';
+const STORAGE_KEY = 'loyees_cart_v1';
+const LEGACY_KEY = 'cece_cart_v1'; // carts saved before the rebrand
 const CartContext = createContext(null);
 
 function loadCart() {
   try {
+    // One-time migration: keep carts that were saved under the old (pre-rebrand) key
+    const legacy = localStorage.getItem(LEGACY_KEY);
+    if (legacy && !localStorage.getItem(STORAGE_KEY)) localStorage.setItem(STORAGE_KEY, legacy);
+    if (legacy) localStorage.removeItem(LEGACY_KEY);
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     return Array.isArray(parsed) ? parsed.filter((i) => i && i.productId && i.quantity > 0) : [];
   } catch {

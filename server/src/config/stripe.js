@@ -11,7 +11,7 @@ export function getStripe() {
   if (client) return client;
   if (!env.stripe.secretKey) return null;
   client = new Stripe(env.stripe.secretKey, {
-    appInfo: { name: 'Cece African Hair Braiding', version: '1.0.0' },
+    appInfo: { name: 'Loyees Hair Braiding Salon', version: '1.0.0' },
     maxNetworkRetries: 2,
   });
   return client;

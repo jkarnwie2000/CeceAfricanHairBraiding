@@ -143,7 +143,7 @@ export default function Book() {
 
   return (
     <>
-      <Seo title="Book an Appointment" description="Book your braiding appointment online at Cece African Hair Braiding. Choose your style, pick a date and time, and get instant confirmation." />
+      <Seo title="Book an Appointment" description="Book your braiding appointment online at Loyees Hair Braiding Salon. Choose your style, pick a date and time, and get instant confirmation." />
       <header className="page-header">
         <div className="container">
           <span className="eyebrow">Online booking</span>

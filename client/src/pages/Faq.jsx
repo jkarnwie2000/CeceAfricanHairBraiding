@@ -5,7 +5,7 @@ import { faqs } from '../data/content.js';
 export default function Faq() {
   return (
     <>
-      <Seo title="Frequently Asked Questions" description="Answers about booking, braiding prices, cancellations, shipping, returns and secure checkout at Cece African Hair Braiding." />
+      <Seo title="Frequently Asked Questions" description="Answers about booking, braiding prices, cancellations, shipping, returns and secure checkout at Loyees Hair Braiding Salon." />
       <header className="page-header">
         <div className="container">
           <span className="eyebrow">Help center</span>

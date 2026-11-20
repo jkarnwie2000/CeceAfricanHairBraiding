@@ -52,7 +52,7 @@ export default function Login() {
           {busy ? <Spinner label="Logging in" /> : 'Log in'}
         </button>
         <p className="text-center muted">
-          New to Cece? <Link to={`/register${redirect ? `?redirect=${encodeURIComponent(redirect)}` : ''}`}>Create an account</Link>
+          New to Loyees? <Link to={`/register${redirect ? `?redirect=${encodeURIComponent(redirect)}` : ''}`}>Create an account</Link>
         </p>
       </form>
     </AuthShell>

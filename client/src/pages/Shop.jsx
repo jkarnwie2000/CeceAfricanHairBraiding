@@ -78,7 +78,7 @@ export default function Shop() {
     <>
       <Seo
         title={activeCat ? `${activeCat.name} — Shop` : 'Beauty Supply Shop'}
-        description="Shop braiding hair, human hair extensions, wigs, hair oils, edge control, shampoos and accessories from Cece African Hair Braiding."
+        description="Shop braiding hair, human hair extensions, wigs, hair oils, edge control, shampoos and accessories from Loyees Hair Braiding Salon."
       />
       <header className="page-header shop-header">
         <div className="container">

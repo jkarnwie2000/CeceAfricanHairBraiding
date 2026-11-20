@@ -12,8 +12,8 @@ function layout(title, body) {
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border:1px solid ${C.line};border-radius:12px;overflow:hidden">
 <tr><td style="background:${C.brown};padding:24px 28px;text-align:center">
-<div style="font-size:24px;color:#fff;letter-spacing:.5px">Cece</div>
-<div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:3px;color:${C.gold};text-transform:uppercase;margin-top:4px">African Hair Braiding</div>
+<div style="font-size:24px;color:#fff;letter-spacing:.5px">Loyees</div>
+<div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:3px;color:${C.gold};text-transform:uppercase;margin-top:4px">Hair Braiding Salon</div>
 </td></tr>
 <tr><td style="padding:28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6">${body}</td></tr>
 <tr><td style="padding:18px 28px;border-top:1px solid ${C.line};font-family:Arial,sans-serif;font-size:12px;color:${C.muted};text-align:center">
@@ -42,7 +42,7 @@ ${row('Starting price', formatMoney(a.priceCents))}
 const STATUS_COPY = {
   pending: 'We have received your appointment request. Our team will review it and confirm shortly.',
   confirmed: 'Great news — your appointment is confirmed! We look forward to seeing you.',
-  completed: 'Thank you for visiting Cece African Hair Braiding. We hope you love your new look!',
+  completed: 'Thank you for visiting Loyees Hair Braiding Salon. We hope you love your new look!',
   cancelled: 'Your appointment has been cancelled.',
   no_show: 'We missed you at your appointment. Please contact us if you would like to rebook.',
 };
@@ -154,17 +154,17 @@ export function passwordResetEmail(name, url) {
 <p>We received a request to reset your password. This link expires in 1 hour.</p>${button(url, 'Choose a new password')}
 <p style="font-size:13px;color:${C.muted}">If you didn't request this, you can safely ignore this email.</p>`
   );
-  return { subject: 'Reset your Cece password', html, text: `Reset your password (expires in 1 hour): ${url}` };
+  return { subject: 'Reset your Loyees password', html, text: `Reset your password (expires in 1 hour): ${url}` };
 }
 
 export function welcomeEmail(name) {
   const html = layout(
     'Welcome',
-    `<h2 style="margin-top:0;color:${C.brown}">Welcome to Cece, ${e(name)}!</h2>
+    `<h2 style="margin-top:0;color:${C.brown}">Welcome to Loyees, ${e(name)}!</h2>
 <p>Your account is ready. Book appointments faster, track orders and manage your profile anytime.</p>
 ${button(`${env.clientUrl}/book`, 'Book an appointment')}`
   );
-  return { subject: 'Welcome to Cece African Hair Braiding', html, text: `Welcome to Cece, ${name}!` };
+  return { subject: 'Welcome to Loyees Hair Braiding Salon', html, text: `Welcome to Loyees, ${name}!` };
 }
 
 export function contactNotificationEmail(msg) {

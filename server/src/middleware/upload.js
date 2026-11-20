@@ -23,7 +23,7 @@ function resolveUploadDir() {
     fs.accessSync(preferred, fs.constants.W_OK);
     return preferred;
   } catch {
-    const tmp = path.join(os.tmpdir(), 'cece-uploads');
+    const tmp = path.join(os.tmpdir(), 'loyees-uploads');
     fs.mkdirSync(tmp, { recursive: true });
     return tmp;
   }

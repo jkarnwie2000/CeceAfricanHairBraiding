@@ -3,7 +3,7 @@ import { env } from '../config/env.js';
 import { User } from '../models/index.js';
 import { ApiError } from '../utils/ApiError.js';
 
-export const AUTH_COOKIE = 'cece_token';
+export const AUTH_COOKIE = 'loyees_token';
 
 export function signToken(user) {
   return jwt.sign({ sub: user._id.toString(), role: user.role }, env.jwtSecret, { expiresIn: env.jwtExpiresIn });
