@@ -1,4 +1,4 @@
-# Loyees Hair Braiding Salon — Salon & Beauty Supply Platform
+# Loyees Hair Braiding Salon — Booking & Beauty Supply Platform
 
 **Live site:** https://loyees-hair-braiding-salon.vercel.app
 
